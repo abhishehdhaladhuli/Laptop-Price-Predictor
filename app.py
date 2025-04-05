@@ -32,7 +32,14 @@ def index():
 
             for col in df.columns:
                 if col in label_encoders:
-                    df[col] = label_encoders[col].transform(df[col])
+                    le = label_encoders[col]
+                    value = df[col].iloc[0]
+                    
+                    # Handle unseen label
+                    if value not in le.classes_:
+                        le.classes_ = np.append(le.classes_, value)
+                    
+                    df[col] = le.transform(df[col])
 
             pred = model.predict(df)[0]
             prediction = round(pred, 2)
