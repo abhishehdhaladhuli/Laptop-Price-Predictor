@@ -16,16 +16,16 @@ def index():
     if request.method == "POST":
         try:
             input_data = {
-                "Company": request.form["company"],
-                "TypeName": request.form["typename"],
-                "Inches": float(request.form["inches"]),
-                "ScreenResolution": request.form["screenresolution"],
-                "Cpu": request.form["cpu"],
-                "Ram": int(request.form["ram"]),
-                "Memory": request.form["memory"],
-                "Gpu": request.form["gpu"],
-                "OpSys": request.form["opsys"],
-                "Weight": float(request.form["weight"])
+                "company": request.form["company"],
+                "typename": request.form["typename"],
+                "inches": float(request.form["inches"]),
+                "screenresolution": request.form["screenresolution"],
+                "cpu": request.form["cpu"],
+                "ram": int(request.form["ram"]),
+                "memory": request.form["memory"],
+                "gpu": request.form["gpu"],
+                "opsys": request.form["opsys"],
+                "weight": float(request.form["weight"])
             }
 
             df = pd.DataFrame([input_data])
