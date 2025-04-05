@@ -1,4 +1,4 @@
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, render_template
 import joblib
 import numpy as np
 import pandas as pd
@@ -13,24 +13,30 @@ label_encoders = joblib.load("model/label_encoders.pkl")
 def home():
     return "Laptop Price Prediction API is running!"
 
-@app.route("/predict", methods=["POST"])
+@app.route("/predict", methods=["GET", "POST"])
 def predict():
-    try:
-        data = request.get_json()
+    if request.method == "POST":
+        try:
+            # Get form data as dictionary
+            form_data = request.form.to_dict()
 
-        # Create DataFrame from input
-        df = pd.DataFrame([data])
+            # Convert numeric fields to float
+            for key in ['inches', 'ram', 'weight']:
+                form_data[key] = float(form_data[key])
 
-        # Preprocess input
-        for col in df.columns:
-            if col in label_encoders:
-                df[col] = label_encoders[col].transform(df[col])
+            # Create DataFrame
+            df = pd.DataFrame([form_data])
 
-        prediction = model.predict(df)[0]
-        return jsonify({"predicted_price": round(prediction, 2)})
+            # Apply label encoders
+            for col in df.columns:
+                if col in label_encoders:
+                    df[col] = label_encoders[col].transform(df[col])
 
-    except Exception as e:
-        return jsonify({"error": str(e)}), 400
+            prediction = model.predict(df)[0]
+            return render_template("index.html", prediction=round(prediction, 2))
 
-if __name__ == "__main__":
-    app.run(debug=True)
+        except Exception as e:
+            return render_template("index.html", error=str(e))
+
+    # GET request - render the form
+    return render_template("index.html")
