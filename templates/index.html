@@ -2,85 +2,73 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Laptop Price Predictor</title>
+  <title>Laptop Price Predictor 💻</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(135deg, #667eea, #764ba2);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      font-family: Arial, sans-serif;
+      background-color: #f4f6f8;
       margin: 0;
+      padding: 0;
     }
-
     .container {
-      background-color: #fff;
-      padding: 40px 30px;
-      border-radius: 16px;
-      width: 90%;
       max-width: 600px;
-      box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
+      background-color: #ffffff;
+      margin: 40px auto;
+      padding: 30px;
+      box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
+      border-radius: 10px;
     }
-
     h2 {
       text-align: center;
-      color: #333;
-      margin-bottom: 25px;
+      color: #333333;
     }
-
+    form {
+      display: flex;
+      flex-direction: column;
+    }
     label {
-      display: block;
-      margin-bottom: 6px;
-      font-weight: 600;
-      color: #444;
-    }
-
-    input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 20px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      background-color: #667eea;
-      color: white;
-      font-size: 16px;
+      margin-top: 10px;
       font-weight: bold;
+    }
+    input {
+      padding: 10px;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #007bff;
+      color: #fff;
       border: none;
-      border-radius: 10px;
+      border-radius: 5px;
+      font-size: 16px;
       cursor: pointer;
     }
-
     button:hover {
-      background-color: #5a67d8;
+      background-color: #0056b3;
     }
-
     .result {
-      text-align: center;
       margin-top: 20px;
-      font-size: 20px;
-      font-weight: bold;
+      padding: 15px;
+      border-radius: 5px;
+      font-size: 18px;
     }
-
     .success {
-      color: green;
+      background-color: #d4edda;
+      color: #155724;
     }
-
     .error {
-      color: red;
+      background-color: #f8d7da;
+      color: #721c24;
     }
   </style>
 </head>
 <body>
-
   <div class="container">
     <h2>Laptop Price Predictor 💻</h2>
-    <form method="POST" action="/">
+    <form method="POST">
       <label for="company">Company</label>
       <input type="text" name="company" id="company" required>
 
@@ -120,6 +108,5 @@
       <div class="result error">Error: {{ error }}</div>
     {% endif %}
   </div>
-
 </body>
 </html>
