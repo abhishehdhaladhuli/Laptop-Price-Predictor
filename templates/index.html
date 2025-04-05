@@ -4,64 +4,118 @@
   <meta charset="UTF-8">
   <title>Laptop Price Predictor 💻</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f4f6f8;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(120deg, #a6c0fe, #f68084);
       margin: 0;
       padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      animation: fadeIn 1.2s ease-in-out;
     }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     .container {
-      max-width: 600px;
+      max-width: 650px;
       background-color: #ffffff;
-      margin: 40px auto;
-      padding: 30px;
-      box-shadow: 0px 0px 15px rgba(0,0,0,0.1);
-      border-radius: 10px;
+      padding: 35px;
+      border-radius: 15px;
+      box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.1);
+      animation: slideUp 1s ease;
     }
+
+    @keyframes slideUp {
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
     h2 {
       text-align: center;
-      color: #333333;
+      color: #333;
+      margin-bottom: 25px;
     }
+
     form {
-      display: flex;
-      flex-direction: column;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
     }
+
     label {
-      margin-top: 10px;
       font-weight: bold;
+      color: #444;
     }
+
     input {
       padding: 10px;
-      margin-top: 5px;
       border: 1px solid #ccc;
-      border-radius: 5px;
+      border-radius: 8px;
+      transition: 0.3s ease;
     }
+
+    input:focus {
+      border-color: #007bff;
+      outline: none;
+      box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+    }
+
     button {
-      margin-top: 20px;
-      padding: 12px;
+      grid-column: span 2;
+      padding: 15px;
       background-color: #007bff;
       color: #fff;
-      border: none;
-      border-radius: 5px;
       font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 10px;
       cursor: pointer;
+      transition: background-color 0.3s ease;
     }
+
     button:hover {
       background-color: #0056b3;
     }
+
     .result {
+      grid-column: span 2;
       margin-top: 20px;
       padding: 15px;
-      border-radius: 5px;
+      border-radius: 10px;
       font-size: 18px;
+      text-align: center;
+      animation: fadeIn 1s ease-in-out;
     }
+
     .success {
       background-color: #d4edda;
       color: #155724;
     }
+
     .error {
       background-color: #f8d7da;
       color: #721c24;
+    }
+
+    @media (max-width: 600px) {
+      form {
+        grid-template-columns: 1fr;
+      }
+
+      button {
+        grid-column: span 1;
+      }
+
+      .result {
+        grid-column: span 1;
+      }
     }
   </style>
 </head>
@@ -99,14 +153,14 @@
       <label for="weight">Weight (kg)</label>
       <input type="number" step="0.01" name="weight" id="weight" required>
 
-      <button type="submit">Predict Price</button>
-    </form>
+      <button type="submit">🔍 Predict Price</button>
 
-    {% if prediction %}
-      <div class="result success">Predicted Price: ₹{{ prediction }}</div>
-    {% elif error %}
-      <div class="result error">Error: {{ error }}</div>
-    {% endif %}
+      {% if prediction %}
+        <div class="result success">Predicted Price: ₹{{ prediction }}</div>
+      {% elif error %}
+        <div class="result error">Error: {{ error }}</div>
+      {% endif %}
+    </form>
   </div>
 </body>
 </html>
