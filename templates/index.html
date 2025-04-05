@@ -5,14 +5,13 @@
   <title>Laptop Price Predictor</title>
   <style>
     body {
-      margin: 0;
-      padding: 0;
       font-family: 'Segoe UI', sans-serif;
       background: linear-gradient(135deg, #667eea, #764ba2);
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
+      margin: 0;
     }
 
     .container {
@@ -81,7 +80,7 @@
 
   <div class="container">
     <h2>Laptop Price Predictor 💻</h2>
-    <form method="POST">
+    <form method="POST" action="/">
       <label for="company">Company</label>
       <input type="text" name="company" id="company" required>
 
@@ -115,7 +114,6 @@
       <button type="submit">Predict Price</button>
     </form>
 
-    <!-- Prediction result -->
     {% if prediction %}
       <div class="result success">Predicted Price: ₹{{ prediction }}</div>
     {% elif error %}
