@@ -1,4 +1,4 @@
-from flask import Flask, request, render_template
+from flask import Flask, request, render_template, jsonify
 import joblib
 import pandas as pd
 
@@ -9,30 +9,38 @@ model = joblib.load("model/trained_model.pkl")
 label_encoders = joblib.load("model/label_encoders.pkl")
 
 @app.route("/", methods=["GET", "POST"])
-def predict():
+def index():
+    prediction = None
+    error = None
+
     if request.method == "POST":
         try:
-            form_data = request.form.to_dict()
+            data = {
+                'Company': request.form['company'],
+                'TypeName': request.form['typename'],
+                'Inches': float(request.form['inches']),
+                'ScreenResolution': request.form['screenresolution'],
+                'Cpu': request.form['cpu'],
+                'Ram': int(request.form['ram']),
+                'Memory': request.form['memory'],
+                'Gpu': request.form['gpu'],
+                'OpSys': request.form['opsys'],
+                'Weight': float(request.form['weight']),
+            }
 
-            # Convert numeric fields
-            form_data["inches"] = float(form_data["inches"])
-            form_data["ram"] = int(form_data["ram"])
-            form_data["weight"] = float(form_data["weight"])
+            df = pd.DataFrame([data])
 
-            df = pd.DataFrame([form_data])
-
-            # Apply label encoders
             for col in df.columns:
                 if col in label_encoders:
                     df[col] = label_encoders[col].transform(df[col])
 
-            prediction = model.predict(df)[0]
-            return render_template("index.html", prediction=round(prediction, 2))
+            predicted_price = model.predict(df)[0]
+            prediction = round(predicted_price, 2)
 
         except Exception as e:
-            return render_template("index.html", error=str(e))
+            error = str(e)
 
-    return render_template("index.html")
+    return render_template("index.html", prediction=prediction, error=error)
 
 if __name__ == "__main__":
     app.run(debug=True)
