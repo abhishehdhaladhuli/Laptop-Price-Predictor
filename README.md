@@ -6,8 +6,6 @@ DOMAIN: DATA SCIENCE<br>
 DURATION: 6 WEEKS<br>
 MENTOR: NEELA SANTHOSH<br>
 # DESCRIPTION OF THE TASK-3
-Hi Abhi! Let's take a deep breath — I’ve got you covered now with a **full structured explanation** starting with a **proper project introduction**, followed by **step-by-step code explanation** from **data preprocessing to model training to Flask deployment**. 💻🚀
-
 ---
 
 ## 💡 **Project Introduction: Laptop Price Predictor**
