@@ -1,6 +1,5 @@
-from flask import Flask, request, jsonify, render_template
+from flask import Flask, request, render_template
 import joblib
-import numpy as np
 import pandas as pd
 
 app = Flask(__name__)
@@ -9,22 +8,17 @@ app = Flask(__name__)
 model = joblib.load("model/trained_model.pkl")
 label_encoders = joblib.load("model/label_encoders.pkl")
 
-@app.route("/")
-def home():
-    return "Laptop Price Prediction API is running!"
-
-@app.route("/predict", methods=["GET", "POST"])
+@app.route("/", methods=["GET", "POST"])
 def predict():
     if request.method == "POST":
         try:
-            # Get form data as dictionary
             form_data = request.form.to_dict()
 
-            # Convert numeric fields to float
-            for key in ['inches', 'ram', 'weight']:
-                form_data[key] = float(form_data[key])
+            # Convert numeric fields
+            form_data["inches"] = float(form_data["inches"])
+            form_data["ram"] = int(form_data["ram"])
+            form_data["weight"] = float(form_data["weight"])
 
-            # Create DataFrame
             df = pd.DataFrame([form_data])
 
             # Apply label encoders
@@ -38,5 +32,7 @@ def predict():
         except Exception as e:
             return render_template("index.html", error=str(e))
 
-    # GET request - render the form
     return render_template("index.html")
+
+if __name__ == "__main__":
+    app.run(debug=True)
