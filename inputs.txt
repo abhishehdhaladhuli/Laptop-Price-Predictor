@@ -1,0 +1,61 @@
+
+
+Here are a few examples you can try by copy-pasting into your form:
+
+---
+
+### ✅ *Test Case 1: High-End Gaming Laptop*
+- *Company:* Asus  
+- *Type Name:* Gaming  
+- *Inches:* 15.6  
+- *Screen Resolution:* 1920x1080  
+- *CPU:* Intel Core i7 7700HQ  
+- *RAM (GB):* 16  
+- *Memory:* 512GB SSD  
+- *GPU:* Nvidia GeForce GTX 1060  
+- *Operating System:* Windows 10  
+- *Weight (kg):* 2.5  
+
+---
+
+### ✅ *Test Case 2: Budget Laptop*
+- *Company:* HP  
+- *Type Name:* Notebook  
+- *Inches:* 14.0  
+- *Screen Resolution:* 1366x768  
+- *CPU:* Intel Core i3 6006U  
+- *RAM (GB):* 4  
+- *Memory:* 500GB HDD  
+- *GPU:* Intel HD Graphics 520  
+- *Operating System:* Windows 10  
+- *Weight (kg):* 2.0  
+
+---
+
+### ✅ *Test Case 3: Ultra Portable MacBook*
+- *Company:* Apple  
+- *Type Name:* Ultrabook  
+- *Inches:* 13.3  
+- *Screen Resolution:* 2560x1600  
+- *CPU:* Intel Core i5 8250U  
+- *RAM (GB):* 8  
+- *Memory:* 256GB SSD  
+- *GPU:* Intel Iris Plus Graphics 640  
+- *Operating System:* macOS  
+- *Weight (kg):* 1.37  
+
+---
+
+### ✅ *Test Case 4: Powerful Workstation*
+- *Company:* Lenovo  
+- *Type Name:* Workstation  
+- *Inches:* 17.3  
+- *Screen Resolution:* 3840x2160  
+- *CPU:* Intel Xeon E3-1505M  
+- *RAM (GB):* 32  
+- *Memory:* 1TB SSD  
+- *GPU:* Nvidia Quadro M2200M  
+- *Operating System:* Windows 10  
+- *Weight (kg):* 3.0  
+
+---
