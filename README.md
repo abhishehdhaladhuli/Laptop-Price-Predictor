@@ -112,6 +112,10 @@ r2 = r2_score(y_test, y_pred)
 - Evaluates model performance using RMSE and R² Score.
 
 ---
+✅ Model trained
+📊 RMSE: 14018.23
+📈 R² Score: 0.8641
+💾 Model & encoders saved in /model folder
 
 ### 📌 Step 9: Save the Model and Encoders
 ```python
